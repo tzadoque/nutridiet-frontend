@@ -29,11 +29,13 @@ const CustomNav = styled.nav`
 
   @media (max-width: 768px) {
     width: 100%;
-    position: sticky;
+    z-index: 9999;
+    position: fixed;
+    left: 0;
     bottom: 0px;
     order: 1;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     ul {
       display: flex;

@@ -11,7 +11,11 @@ const DesktopGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
-    padding: 32px 16px;
+    padding: 32px 21px;
+
+    &:nth-child(2) {
+      margin-bottom: 64px;
+    }
   }
 `;
 

@@ -1,4 +1,15 @@
+import { useContext, useEffect } from 'react';
+import GlobalContext from '../../context/GlobalContext';
+
 export function UsersAdminPage() {
+  const { setPageTitle } = useContext(GlobalContext);
+
+  useEffect(() => {
+    document.title = 'NutriDiet - Pacientes';
+
+    setPageTitle('Pacientes');
+  }, []);
+
   return (
     <div>
       <h1>Users admin page</h1>
