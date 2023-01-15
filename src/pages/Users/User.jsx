@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { requester } from '../api/requester';
+import { requester } from '../../api/requester';
 
 export function UserPage() {
   const { id } = useParams();

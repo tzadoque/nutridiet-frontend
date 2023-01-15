@@ -1,13 +1,29 @@
-import './App.css';
 import { AppRoutes } from './Routes';
-import { Navbar } from './components/Navbar';
+import { Sidebar } from './components/Sidebar/Sidebar.jsx';
+import { BrowserRouter } from 'react-router-dom';
+
+import DesktopGrid from './components/Grid/DesktopGrid.jsx';
+import Header from './components/Header/Header.jsx';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #F1F1F1;
+    padding: 0;
+    margin: 0;
+  }
+`;
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <AppRoutes />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <DesktopGrid>
+        <GlobalStyle />
+        <Sidebar />
+        <AppRoutes />
+      </DesktopGrid>
+    </BrowserRouter>
   );
 }
 
