@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 
-import documento from '../assets/documento.svg';
-import pacientes from '../assets/pacientes.svg';
-import heart from '../assets/heart.svg';
-import apple from '../assets/apple.svg';
+import documento from '../../assets/documento.svg';
+import pacientes from '../../assets/pacientes.svg';
+import heart from '../../assets/heart.svg';
+import apple from '../../assets/apple.svg';
 
-import Card from '../components/Cards/Card';
-import { CardsGrid } from '../components/Grid/CardsGrid';
-import GlobalContext from '../context/GlobalContext';
+import Card from '../../components/Cards/Card';
+import { CardsGrid } from '../../components/Grid/CardsGrid';
+import GlobalContext from '../../context/GlobalContext';
 
 export function HomePage() {
   const { setPageTitle } = useContext(GlobalContext);

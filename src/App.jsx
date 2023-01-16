@@ -11,6 +11,12 @@ import GlobalContext from './context/GlobalContext';
 import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
   body {
     background: #F1F1F1;
     padding: 0;

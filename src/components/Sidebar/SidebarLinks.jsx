@@ -35,7 +35,7 @@ export const CustomNavLink = styled(NavLink)`
 
   &.active,
   &:hover.active {
-    background-color: green;
+    background-color: ${props => props.theme.colors.primary};
     transition: 0.2s ease-in-out;
   }
 `;
@@ -64,7 +64,7 @@ export const ConsultasNavLink = styled(CustomNavLink)`
   }
 `;
 
-export const NutricionistasNavLink = styled(CustomNavLink)`
+export const ProfissionaisNavLink = styled(CustomNavLink)`
   background-image: url(${Nutricionistas});
 
   &.active {

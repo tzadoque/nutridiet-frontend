@@ -3,7 +3,7 @@ import {
   AlimentosNavLink,
   ConsultasNavLink,
   DashboardNavLink,
-  NutricionistasNavLink,
+  ProfissionaisNavLink,
   PacientesNavLink,
 } from './SidebarLinks';
 
@@ -51,19 +51,19 @@ export function Sidebar() {
     <CustomNav>
       <ul>
         <li>
-          <DashboardNavLink to='/' />
+          <DashboardNavLink to='/admin/dashboard' />
         </li>
         <li>
-          <PacientesNavLink to='/users' />
+          <PacientesNavLink to='/admin/pacientes' />
         </li>
         <li>
-          <ConsultasNavLink to='/consultas' />
+          <ConsultasNavLink to='/admin/consultas' />
         </li>
         <li>
-          <NutricionistasNavLink to='/nutricionistas' />
+          <ProfissionaisNavLink to='/admin/profissionais' />
         </li>
         <li>
-          <AlimentosNavLink to='/alimentos' />
+          <AlimentosNavLink to='/admin/alimentos' />
         </li>
       </ul>
     </CustomNav>

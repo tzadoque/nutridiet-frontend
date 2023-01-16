@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
-import GlobalContext from '../../context/GlobalContext';
+import GlobalContext from '../../../context/GlobalContext';
 
-export function UsersAdminPage() {
+export function PacientesAdminPage() {
   const { setPageTitle } = useContext(GlobalContext);
 
   useEffect(() => {
