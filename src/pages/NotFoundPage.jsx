@@ -1,6 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import GlobalContext from '../context/GlobalContext';
 
 const AlignCenter = styled.div`
   display: flex;
@@ -12,12 +11,8 @@ const AlignCenter = styled.div`
 `;
 
 export default function NotFoundPage() {
-  const { setPageTitle } = useContext(GlobalContext);
-
   useEffect(() => {
     document.title = 'NutriDiet - 404 página não encontrada';
-
-    setPageTitle('Página não encontrada');
   }, []);
 
   return (
