@@ -10,8 +10,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Home Page - {authenticated ? 'sim' : 'não'}</h1>
-      <button onClick={handleLogout}>Logout</button>
+      <h1>Home Page</h1>
     </div>
   );
 }

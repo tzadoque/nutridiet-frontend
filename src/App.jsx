@@ -5,15 +5,20 @@ import { createGlobalStyle } from 'styled-components';
 //authcontext
 import { AuthProvider } from './context/AuthContext';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     background: #F1F1F1;
     padding: 0;
     margin: 0;
   }
+
+  * {
+    box-sizing: border-box;
+    font-family: Lato;
+  }
 `;
 
-function App() {
+export function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -23,5 +28,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

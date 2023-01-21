@@ -31,11 +31,16 @@ export default function useAuth() {
 
   async function handleLogin(cpf, password) {
     try {
+      setLoading(true);
       const res = await api.post('/auth/login', { cpf, password });
 
       // erro no login
       if (res.data.errorMsg) {
-        return console.log(res.data.errorMsg);
+        setLoading(false);
+
+        return {
+          error: res.data.errorMsg,
+        };
       }
 
       // login feito com sucesso
@@ -46,11 +51,17 @@ export default function useAuth() {
 
       setAuthenticated(true);
       setLoading(false);
+      navigate('/');
 
-      return navigate('/');
+      return {
+        error: false,
+      };
     } catch (e) {
       //erro no login
-      return console.log(e.response.data.errorMsg);
+      setLoading(false);
+      return {
+        error: e.response.data.errorMsg,
+      };
     }
   }
 
