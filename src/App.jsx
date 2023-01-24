@@ -1,6 +1,7 @@
 import { AppRoutes } from './Routes';
 import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import { GlobalProvider } from './context/GlobalContext';
 
 //authcontext
 import { AuthProvider } from './context/AuthContext';
@@ -21,10 +22,12 @@ export const GlobalStyle = createGlobalStyle`
 export function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <GlobalStyle />
-        <AppRoutes />
-      </AuthProvider>
+      <GlobalProvider>
+        <AuthProvider>
+          <GlobalStyle />
+          <AppRoutes />
+        </AuthProvider>
+      </GlobalProvider>
     </BrowserRouter>
   );
 }

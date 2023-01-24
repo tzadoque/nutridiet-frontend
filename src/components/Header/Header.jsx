@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 import AvatarIcon from '../../assets/avatar.svg';
+import ArrowUpIcon from '../../assets/arrow-up.svg';
+import ArrowDownIcon from '../../assets/arrow-down.svg';
 import { NavLink } from 'react-router-dom';
 
 import { useContext } from 'react';
 
 //context
 import { AuthContext } from '../../context/AuthContext';
+import { GlobalContext } from '../../context/GlobalContext';
 
 const CustomHeader = styled.header`
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
@@ -38,14 +41,8 @@ const CustomHeader = styled.header`
     background-color: #f9f9f9;
   }
 
-  .user-dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: #292929;
-    font-size: 1rem;
-    font-weight: 500;
+  .dropdown-menu {
+    position: relative;
   }
 
   @media (max-width: 576px) {
@@ -65,8 +62,63 @@ const CustomHeader = styled.header`
   }
 `;
 
+const CustomDropdownButton = styled.button`
+  all: unset;
+  display: flex;
+  gap: 8px;
+`;
+
+const CustomDropdownContent = styled.ul`
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  top: 100%;
+  padding: 16px 0;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    padding: 8px 0;
+
+    &:hover {
+      background-color: ${props => props.theme.colors.secondary};
+    }
+  }
+`;
+
+import React, { useState } from 'react';
+
+const DropdownMenu = ({ user, icon, logout }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => setShowMenu(!showMenu);
+
+  return (
+    <div className='dropdown-menu'>
+      <CustomDropdownButton onClick={toggleMenu}>
+        <img src={icon} />
+        <p>{user.name}</p>
+        <img src={showMenu ? ArrowUpIcon : ArrowDownIcon} alt='' />
+      </CustomDropdownButton>
+      {showMenu && (
+        <CustomDropdownContent>
+          <button onClick={logout}>logout</button>
+        </CustomDropdownContent>
+      )}
+    </div>
+  );
+};
+
 export default function Header() {
   const { handleLogout } = useContext(AuthContext);
+  const { title, currentUser } = useContext(GlobalContext);
 
   return (
     <CustomHeader>
@@ -74,13 +126,13 @@ export default function Header() {
         <div className='logo'>
           <NavLink to='/'>LOGO</NavLink>
         </div>
-        <div className='user-dropdown'>
-          <img src={AvatarIcon} />
-          <p>Nome do usuáiro</p>
-          <button onClick={handleLogout}>logout</button>
-        </div>
+        <DropdownMenu
+          user={currentUser}
+          icon={AvatarIcon}
+          logout={handleLogout}
+        />
       </div>
-      <div className='page-title'>Título</div>
+      <div className='page-title'>{title}</div>
     </CustomHeader>
   );
 }

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 // components
-import MainContent from '../../components/Containers/MainContent';
-import CustomForm from '../../components/Form/CustomForm';
+import MainContent from '../../../components/Containers/MainContent';
+import CustomForm from '../../../components/Form/CustomForm';
 
 import styled from 'styled-components';
-import { AlimentosContext } from '../../context/AlimentosContext';
-import { useParams } from 'react-router-dom';
+import { AlimentosContext } from '../../../context/AlimentosContext';
+import { PrimaryButton } from '../../../components/Buttons';
 
 const FormControl = styled.div`
   display: flex;
@@ -28,14 +28,13 @@ const FormStyled = styled.form`
   }
 `;
 
-export default function AlimentosUpdatePage() {
+export default function AlimentosRegisterPage() {
   useEffect(() => {
     // altera o título da aba
-    document.title = 'NutriDiet - Editar alimentos';
+    document.title = 'NutriDiet - Criar alimentos';
   }, []);
 
-  const { data, handleUpdate, loading } = useContext(AlimentosContext);
-  const { id } = useParams();
+  const { handleCreate } = useContext(AlimentosContext);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -49,30 +48,16 @@ export default function AlimentosUpdatePage() {
     generalError: '',
   });
 
-  useEffect(() => {
-    if (!loading) {
-      const currentAlimento = data.filter(item => {
-        return item.id == id;
-      })[0];
-
-      if (currentAlimento) {
-        setFormData({
-          ...formData,
-          name: currentAlimento.name,
-          type: currentAlimento.type,
-          calories: currentAlimento.calories,
-          lipids: currentAlimento.lipids,
-        });
-      }
-    }
-  }, [data]);
-
   async function handleSubmit(e) {
     e.preventDefault();
 
     const { name, type, calories, lipids } = formData;
 
-    await handleUpdate({ name, type, calories, lipids }, id);
+    await handleCreate({ name, type, calories, lipids });
+
+    setFormData({ name: '', type: '', calories: '', lipids: '' });
+
+    alert('O alimento foi criado');
   }
 
   function handleChange() {
@@ -86,7 +71,7 @@ export default function AlimentosUpdatePage() {
 
   return (
     <MainContent>
-      <CustomForm stepTitle='Editar alimento' />
+      <CustomForm stepTitle='Criar alimento' />
 
       <FormStyled onSubmit={handleSubmit}>
         <FormControl>
@@ -145,9 +130,9 @@ export default function AlimentosUpdatePage() {
           />
         </FormControl>
         <FormControl>
-          <button type='button' onClick={handleSubmit}>
-            Atualizar alimento
-          </button>
+          <PrimaryButton type='button' onClick={handleSubmit}>
+            Cadastrar alimento
+          </PrimaryButton>
         </FormControl>
       </FormStyled>
     </MainContent>

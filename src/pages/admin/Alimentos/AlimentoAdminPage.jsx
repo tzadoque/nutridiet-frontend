@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { PrimaryButton, PrimaryButtonLink } from '../../../components/Buttons';
 // components
-import MainContent from '../../components/Containers/MainContent';
-import { AlimentosContext } from '../../context/AlimentosContext';
+import MainContent from '../../../components/Containers/MainContent';
+import { AlimentosContext } from '../../../context/AlimentosContext';
 
 export default function AlimentoAdminPage() {
   useEffect(() => {
@@ -11,7 +12,7 @@ export default function AlimentoAdminPage() {
     document.title = 'NutriDiet - Alimento';
   }, []);
 
-  const { error, data, handleDelete } = useContext(AlimentosContext);
+  const { data, handleDelete } = useContext(AlimentosContext);
   const { id } = useParams();
 
   const [currentAlimento, setCurrentAlimento] = useState({});
@@ -30,8 +31,12 @@ export default function AlimentoAdminPage() {
           <p>Calorias: {currentAlimento.calories}</p>
           <p>Lipídios: {currentAlimento.lipids}</p>
 
-          <Link to={`/alimentos/${id}/editar`}>Editar</Link>
-          <button onClick={() => handleDelete(id)}>Excluir</button>
+          <PrimaryButtonLink to={`/alimentos/${id}/editar`}>
+            Editar
+          </PrimaryButtonLink>
+          <PrimaryButton onClick={() => handleDelete(id)} color='red'>
+            Excluir
+          </PrimaryButton>
         </>
       )}
     </MainContent>

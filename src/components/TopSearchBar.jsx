@@ -24,8 +24,8 @@ const TopSearchBarButton = styled(PrimaryButtonLink)`
 export default function TopSearchBar({ link, placeholder, textButton }) {
   return (
     <TopSearchBarContainer>
-      <TopSearchBarTitle>Pesquisar</TopSearchBarTitle>
-      <SearchInput placeholder={placeholder} />
+      {/* <TopSearchBarTitle>Pesquisar</TopSearchBarTitle>
+      <SearchInput placeholder={placeholder} /> */}
 
       <TopSearchBarButton to={link}>{textButton}</TopSearchBarButton>
     </TopSearchBarContainer>

@@ -11,6 +11,11 @@ import { AuthContext } from '../context/AuthContext';
 // images
 import EyeIcon from '../assets/eye.svg';
 import EyeClosedIcon from '../assets/eyeClosed.svg';
+import { LoginFormControl } from '../components/Form/FormControl';
+import {
+  CustomInput,
+  CustomPasswordInput,
+} from '../components/Input/StyledInputs';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -25,14 +30,6 @@ const LoginMainContent = styled(MainContent)`
   max-width: 395px;
   height: auto;
   padding: 64px;
-
-  h1 {
-    font-family: Lato;
-    font-weight: bold;
-    font-size: 2rem;
-    color: #292929;
-    margin-bottom: 32px;
-  }
 `;
 
 const LoginForm = styled.form`
@@ -41,56 +38,9 @@ const LoginForm = styled.form`
   gap: 1rem;
 `;
 
-const LoginFormControl = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-  width: 100%;
-  font-family: Lato;
-  position: relative;
-
-  input {
-    width: 100%;
-    height: 32px;
-  }
-
-  button {
-    position: absolute;
-    right: 16px;
-    top: 32px;
-  }
-`;
-
 const LoginError = styled.p`
   color: red;
   margin: 0;
-`;
-
-const CustomInput = styled.input`
-  padding: 10px 16px;
-  background: #fcfcfc;
-  border: 1px solid ${props => (props.hasError ? 'red' : '#e6e6e6 ')};
-  border-radius: 8px;
-  color: black;
-  font-size: 1rem;
-  font-family: Lato;
-  font-weight: 500;
-  height: 40px !important;
-
-  width: 100%;
-
-  &:focus {
-    outline: 1px solid #e6e6e6;
-  }
-
-  &::placeholder {
-    color: #c4c4c4;
-  }
-`;
-
-const PasswordInput = styled(CustomInput)`
-  padding: 10px 64px 10px 16px;
 `;
 
 const HidePasswordButton = styled.button`
@@ -104,7 +54,7 @@ const HidePasswordButton = styled.button`
 `;
 
 const LoginButton = styled(PrimaryButton)`
-  border-radius: 21px;
+  border-radius: 8px;
   margin-top: 16px;
 `;
 
@@ -198,7 +148,7 @@ export default function LoginPage() {
           </LoginFormControl>
           <LoginFormControl>
             <label htmlFor='password'>Password*</label>
-            <PasswordInput
+            <CustomPasswordInput
               type={showPassword ? 'password' : 'text'}
               name='password'
               id='password'
@@ -206,7 +156,7 @@ export default function LoginPage() {
               value={formData.password}
               onChange={handleChange}
               placeholder='Digite a sua senha'
-            ></PasswordInput>
+            ></CustomPasswordInput>
             {formData.passwordError && (
               <LoginError>{formData.passwordError}</LoginError>
             )}

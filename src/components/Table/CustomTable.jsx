@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 import PlanilhaIcon from '../../assets/planilha.svg';
 
-const StyledTable = styled.div`
+export const StyledTable = styled.div`
   width: 100%;
   font-family: Lato;
   padding: 16px 24px;
 `;
 
-export default function CustomTable({ titulos, elementos, route }) {
+export function CustomTable({ titulos, elementos, route }) {
   return (
     <StyledTable>
       <TableHead>

@@ -16,7 +16,7 @@ export const PrimaryButtonLink = styled(NavLink)`
 
 export const PrimaryButton = styled.button`
   all: unset;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.color || props.theme.colors.primary};
   color: #fff;
   padding: 8px;
   border-radius: 8px;
